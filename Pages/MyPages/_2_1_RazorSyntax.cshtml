@@ -1,0 +1,81 @@
+@page
+@{
+    var u = "123";
+    var numbers = Enumerable.Range(1, 10); //Get numbers from 1 - 10
+}
+
+
+<h3>shity @u </h3>
+<br/>
+
+@{
+    foreach(var number in numbers){
+        //@()内的html标签会直接呈现，其中如果再有@或者@()标记则作为c#代码
+        <p>@(number * 10)</p>
+    }
+}
+<br/>
+
+For support, contact support@@domain.com
+
+<br/>
+@{
+    foreach(var number in numbers)
+    {
+        //@:冒号表示后面没有@或@()标记的都是html代码
+        @(number * 10)@: * 10 = @(number * 100)&nbsp;
+    }
+}
+<br/>
+
+@{
+    foreach(var number in numbers){
+        //<text>标签表示没有@或者@()外的都是html代码，text标签本身不reander
+        <text>@(number * 10) * 10 = @(number * 10)&nbsp;</text>
+    }
+}
+<br/>
+
+@*Get numbers between 1 - 10*@
+@{
+    /*Get numbers from 1 - 10*/
+    //Get numbers  between 1 - 10
+    //上面3种都是注释，其中第一种可以在外码块外使用
+    foreach(var number in numbers){
+        @number
+    }
+}
+<br/>
+
+
+<!-- 下面是循环等的语法，只要@开头接关键字就行，trycatch也是如此 -->
+@foreach(var number in numbers){
+    @number
+}
+
+@for(var i = 0; i < numbers.Count(); i++){
+    @numbers.ElementAt(i)
+}
+
+@if(numbers.Count() == 10){
+    @:10 Numbers - Good!   
+}
+
+@{var condition = 1; var message = "";}
+
+@switch(condition){
+    case 1:
+        message = "Case 1";
+        break;
+    case 2:
+        message = "Case 2";
+        break;
+    case 3:
+        message = "Case 3";
+        break;
+    default:
+        message = "Default Case";
+        break;
+}
+
+@message

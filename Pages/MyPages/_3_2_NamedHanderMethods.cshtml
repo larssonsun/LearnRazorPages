@@ -1,0 +1,28 @@
+@page "{handler?}"
+@model NamedHandlerMethodsModel
+
+<h3>Player Collection</h3>
+<ul>
+    @if(Model.Players != null)
+    {
+        @foreach (var player in Model.Players)
+        {
+        <form method="post">
+        <li>
+            <div>
+                <span>@player.PlayInfo</span>
+                <span><button asp-page-handler="delplayer" class="btn btn-default">删除</button></span>
+                <span><button asp-page-handler="editplayer" class="btn btn-default">编辑</button></span>
+            </div>
+            <input type="hidden" name="playerno" value="@player.PlayerNo" />
+        </li>
+        </form>
+        }
+    }
+</ul>
+<form method="post" asp-page-handler="addplayer">
+    <p><input name="playername" /></p>
+    <p><input name="playerage" /></p>
+    <p><button class="btn btn-default">新增</button></p>
+</form>
+<p>@Model.Message</p>

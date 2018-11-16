@@ -1,0 +1,27 @@
+@page
+@{
+    var name  =string.Empty;
+    if(Request.HasFormContentType)
+    {
+        name = Request.Form["name"];
+    }
+}
+
+@functions{
+    [BindProperty]
+    public int Age{ get; set; }
+}
+
+<div>
+    <form method="post">
+        <p><input name="name" /></p>
+        <p><input name="age" /></p>
+        <p><input type="submit" text="哈哈" /></p>
+    </form>
+</div>
+<div>
+    @if(!string.IsNullOrEmpty(name))
+    {
+        <p>shity!!! @name @Age</p>
+    }
+</div>

@@ -1,0 +1,15 @@
+@page
+@model WithPageModelApproachPageModel
+<div>
+    <form method="post">
+        <p><input name="name" /></p>
+        <p><input name="age" /></p>
+        <p><input type="submit" text="哈哈" /></p>
+    </form>
+</div>
+<div>
+    @if(!string.IsNullOrEmpty(Model.Name))
+    {
+        <p>shity!!! @Model.Name @Model.Age</p>
+    }
+</div>
