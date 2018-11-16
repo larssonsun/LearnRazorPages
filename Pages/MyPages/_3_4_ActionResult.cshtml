@@ -1,0 +1,11 @@
+@page "{handler?}"
+@model UseActionResult
+@{
+
+}
+<h3>@Model.Message</h3>
+<form method="post" asp-page-handler="Save">
+    <p><input name="playername" value="@Model.PlayerName" /></p>
+    <p><input name="playerage" /></p>
+    <p><button class="btn btn-default">保存</button></p>
+</form>

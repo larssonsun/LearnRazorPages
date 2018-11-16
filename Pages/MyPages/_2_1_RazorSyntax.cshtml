@@ -1,5 +1,7 @@
 @page
+
 @{
+    <!-- @{} 表式代码块，其中的内容不会呈现。代码块的默认语言为C# -->
     var u = "123";
     var numbers = Enumerable.Range(1, 10); //Get numbers from 1 - 10
 }
@@ -10,7 +12,7 @@
 
 @{
     foreach(var number in numbers){
-        //@()内的html标签会直接呈现，其中如果再有@或者@()标记则作为c#代码
+        //@()是Razor的显式表达式，其中内容会呈现到html中
         <p>@(number * 10)</p>
     }
 }
@@ -22,7 +24,7 @@ For support, contact support@@domain.com
 @{
     foreach(var number in numbers)
     {
-        //@:冒号表示后面没有@或@()标记的都是html代码
+        //要在代码块内在同一行呈现html内容，请使用 @: 语法
         @(number * 10)@: * 10 = @(number * 100)&nbsp;
     }
 }
@@ -30,7 +32,7 @@ For support, contact support@@domain.com
 
 @{
     foreach(var number in numbers){
-        //<text>标签表示没有@或者@()外的都是html代码，text标签本身不reander
+        //<text>标签表示没有@或者@()外的都是html代码，text标签本身不呈现
         <text>@(number * 10) * 10 = @(number * 10)&nbsp;</text>
     }
 }
