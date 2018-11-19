@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-public class TagHelpers : PageModel
+public class AnchorTagHelper : PageModel
 {
     public Dictionary<string, string> Dict { get; set; }
 
