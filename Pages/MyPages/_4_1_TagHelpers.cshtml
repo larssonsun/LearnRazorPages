@@ -1,0 +1,16 @@
+@page "{handler?}"
+@model TagHelpers
+
+<!-- asp-all-route-data -->
+<p></p><a asp-all-route-data="@Model.Dict">test asp-all-route-data</a></p>
+<!-- asp-fragment -->
+<p><a asp-fragment="section1">test asp-fragment</a></p>
+<p><a asp-fragment="section2">test asp-fragment 2</a></p>
+<!-- asp-page-handler -->
+<p><a asp-page-handler="ShityAction">test asp-page-handler</a></p>
+<!-- asp-route- -->
+<p><a asp-route-key3="val3">test asp-route- 1</a></p>
+<p><a asp-route-handler="save">test asp-route- 2</a></p>
+<!-- asp-page -->
+<p><a asp-page="/About">test asp-page 1 </a></p>
+<p><a asp-page="_0_1_SingleFileApproach" asp-route-shity="abc">test asp-page 2</a></p>
