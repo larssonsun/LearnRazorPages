@@ -1,0 +1,8 @@
+@page
+<!-- The query string named v is added to the image's URL if the append-version attribute is set to true. 
+The value is calculated from the file contents, so if the file is amended, the value will differ. 
+Browsers take query string values into account when 
+determining whether a request can be satisfied from its cache. 
+Therefore, if the query string value changes, 
+the browser will retrieve the new version of the file from the server. -->
+<img asp-append-version="true" src="/images/banner1.svg">
