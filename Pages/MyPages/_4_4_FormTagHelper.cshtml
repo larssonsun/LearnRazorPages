@@ -1,0 +1,18 @@
+@page "{handler?}"
+@model FormTagHelperModel
+
+<!-- asp-all-route-data, asp-page, asp-fragment -->
+<form asp-page="_4_4_targetpage" asp-all-route-data="@Model.Dict" asp-fragment="note" method="post">
+    <button>test asp-all-route-data, asp-page, asp-fragment</button>
+</form>
+<!-- asp-page-handler -->
+<form asp-page-handler="shity" method="post">
+    <button>test asp-page-handler</button>
+    
+</form>
+<!-- asp-route- -->
+<form asp-page="_4_4_targetpage" asp-route-key1="what" method="post">
+    <button>test asp-route-</button>
+</form>
+
+<h4>@Model.Msg</h4>
