@@ -1,0 +1,21 @@
+@page
+@using Microsoft.Extensions.Caching.Memory;
+@{
+    
+    var id = 213;
+}
+<!-- when the cache prop "enabled==true" then the cache enabled -->
+<p><cache enabled="DateTime.Now.DayOfWeek == DayOfWeek.Sunday">@DateTime.Now</cache></p>
+<!-- the datetime will be cache 5s -->
+<p><cache expires-after="TimeSpan.FromSeconds(5)">@DateTime.Now</cache></p>
+<!-- the cache will never enable after the time 2018-11-20 10:29:00 -->
+<p><cache expires-on="new DateTimeOffset(new DateTime(2018, 11, 20, 10, 29, 0))">@DateTime.Now</cache></p>
+<!-- the cache will expire after the 5s from last request -->
+<p><cache expires-sliding="TimeSpan.FromSeconds(5)">@DateTime.Now</cache></p>
+<!-- The order in which the cache is removed from memory (High, Low, Normal, NeverRemove) -->
+<p><cache priority="CacheItemPriority.High">@DateTime.Now</cache></p>
+<!-- can cache multiple versions of the same content based on different criteria. The vary-by attribute provides a mechanism -->
+<!-- eg: vary-by-cookie,vary-by-header,vary-by-query,vary-by-route,vary-by-user -->
+<p><cache vary-by-cookie="AppCookie1, AppCookie2">@DateTime.Now</cache></p>
+<p><cache vary-by-route="key1, key2">@DateTime.Now</cache></p>
+<p><cache vary-by="@id">@DateTime.Now</cache></p>
