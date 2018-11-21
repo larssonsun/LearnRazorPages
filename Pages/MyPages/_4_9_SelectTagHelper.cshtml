@@ -1,0 +1,11 @@
+@page
+@model SelectTagHelperModel
+
+<cache expires-after="TimeSpan.FromSeconds(15)">@Model.Items</cache>
+<form asp-route-handler="ShowSelItem" method="post">
+    <select asp-for="SelItemVal" asp-items="Model.Items">
+        <option value="">选一个</option>
+    </select>
+    <button>ShowSelItem</button>
+</form>
+<h2>@Model.Msg</h2>

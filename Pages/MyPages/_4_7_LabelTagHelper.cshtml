@@ -1,0 +1,11 @@
+@page
+@model LabelTagHelperModel
+
+<form asp-route-handler="Save" method="post">
+    <label asp-for="Usr.UserName"></label>
+    <input asp-for="Usr.UserName" /><br />
+    <label asp-for="Usr.Password"></label>
+    <input asp-for="Usr.Password" />
+    <button>保存</button>
+</form>
+<h2>@Model.Msg</h2>

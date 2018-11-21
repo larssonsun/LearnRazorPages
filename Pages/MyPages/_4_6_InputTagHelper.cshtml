@@ -1,0 +1,20 @@
+@page
+@model InputTagHelperModel
+@{
+
+}
+<form asp-page-handler="Save" method="post">
+    <input asp-for="Member.PersonId" /><br />
+    <input asp-for="Member.Name" /><br />
+    <input asp-for="Member.Email" /><br />
+    <input asp-for="Member.Password" /><br />
+    <input asp-for="Member.Telephone" /><br />
+    <input asp-for="Member.Website" /><br />
+    <input asp-for="Member.DateOfBirth" /><br />
+    <input asp-for="Member.Salary" /><br />
+    <input asp-for="Member.SendSpam" /><br />
+    <input asp-for="Member.NumberOfCats" /><br />
+    <input asp-for="Member.Selfies" /><br />
+    <button>Submit</button>
+</form>
+<h3>@Model.Msg</h3>
