@@ -1,11 +1,20 @@
-@page
+@page "{handler?}/{sta?}"
+<!-- the ? means that this element is chooseable -->
 @model SelectTagHelperModel
 
-<cache expires-after="TimeSpan.FromSeconds(15)">@Model.Items</cache>
 <form asp-route-handler="ShowSelItem" method="post">
-    <select asp-for="SelItemVal" asp-items="Model.Items">
-        <option value="">选一个</option>
-    </select>
+    <p>
+        <label asp-for="SelItemVal"></label>
+        <select asp-for="SelItemVal" asp-items="Model.Items">
+            <option value="">选择一个项目</option>
+        </select>
+    </p>
+    <p>
+        <select asp-for="SelSampleVal" asp-items='@(new SelectList(Model.Samples, "SampleId", "SampleName"))'>
+            <option value="">选择一个样品</option>
+        </select>
+    </p>
     <button>ShowSelItem</button>
 </form>
+<a asp-route-handler="TestTempData">TestTempData "msg"</a>
 <h2>@Model.Msg</h2>
