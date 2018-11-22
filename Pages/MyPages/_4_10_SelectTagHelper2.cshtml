@@ -1,0 +1,17 @@
+@page "{handler?}"
+@model SelectTagHelperModel2
+<form asp-route-handler="save" method="post">
+    <p>
+        <select asp-for="SelectedTypeVal" asp-items="Html.GetEnumSelectList<ItemType>()">
+            <option value="">请选择类型</option>
+        </select>
+        <select asp-for = "SelectedItemVal" asp-items="Model.Items">
+            <option value="">请选择项目</option>
+        </select>
+        <select asp-for="SelectedSampleVal" asp-items="Model.Samples">
+            <option value="">请选择样品</option>
+        </select>
+    </p>
+    <p><button>save</button></p>
+</form>
+<h3>@Model.Msg</h3>
