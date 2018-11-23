@@ -11,7 +11,7 @@ public class SelectTagHelperModel2 : PageModel
     [TempData]
     public string Msg { get; set; }
     [TempData]
-    public int[] SelState { get; set; }
+    public string[] SelState { get; set; }
 
     [BindProperty]
     public int? SelectedTypeVal { get; set; }
@@ -26,14 +26,17 @@ public class SelectTagHelperModel2 : PageModel
 
     public void OnGet()
     {
+        // get content state
         if (SelState != null)
         {
-            SelectedTypeVal = (int?)SelState[0];
-            SelectedItemVal = (int?)SelState[1];
-            SelectedSampleVal = (int?)SelState[2];
+            SelectedTypeVal = SelState[0] == string.Empty ? null : (int?)int.Parse(SelState[0]);
+            SelectedItemVal = SelState[1] == string.Empty ? null : (int?)int.Parse(SelState[1]);
+            SelectedSampleVal = SelState[2] == string.Empty ? null : (int?)int.Parse(SelState[2]);
+            Console.Write($"{SelectedItemVal} {SelectedSampleVal}");
         }
 
         // source (new int[] { 1 }) should from db
+        #region
 
         var source_items = (new int[] { 1 }).Select(x => new
         {
@@ -67,13 +70,14 @@ public class SelectTagHelperModel2 : PageModel
             ItemId = "1102"
         });
 
+        #endregion
+
         //vm prop
 
         Samples = new SelectList(source_samples, "SampleId", "SampleName", null, "ItemId");
-        // if the class is Strong type we should use nameof for each class prop 
+        // if the class "Samples" is Strong type, we should use nameof for each class property 
         // to minimise the chances of typos creeping into the code. just like fllowing eg:
-
-        // Staff = new SelectList(source_samples_strong, 
+        // Samples = new SelectList(source_samples, 
         // nameof(Sample.SampleId), 
         // nameof(Sample.SampleName), null, 
         // nameof(Sample.ItemId));
@@ -89,7 +93,13 @@ public class SelectTagHelperModel2 : PageModel
     }
     public RedirectToPageResult OnPostSave()
     {
-        SelState = new int[] { SelectedTypeVal.Value, SelectedItemVal.Value, SelectedSampleVal.Value };
+        // save content state
+        SelState = new string[]
+        {
+            SelectedTypeVal == null ? string.Empty : SelectedTypeVal.Value.ToString(),
+            SelectedItemVal == null ? string.Empty : SelectedItemVal.Value.ToString(),
+            SelectedSampleVal == null ? string.Empty : SelectedSampleVal.Value.ToString()
+        };
         Msg = $"you select {SelectedTypeVal} {SelectedItemVal} {SelectedSampleVal}";
         return RedirectToPage();
     }
