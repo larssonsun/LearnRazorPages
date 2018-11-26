@@ -1,0 +1,8 @@
+@page
+@model ValidateTagHelperModel
+<form asp-route-handler="Save" method="post">
+    <p><input asp-for="Player.PlayerName" /></p>
+    <p><span asp-validation-for="Player.PlayerName"></span></p>
+    <p><button>保存</button></p>
+</form>
+<h2>@Model.Msg</h2>

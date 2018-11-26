@@ -1,0 +1,7 @@
+@page "{handler?}"
+@model TextAreaTagHelperModel
+<form asp-route-handler="Save" method="post">
+    <p><textarea asp-for="Memo" placeholder="备注"></textarea></p>
+    <p><button>提交</button></p>
+</form>
+<h2>@Model.Msg</h2>
