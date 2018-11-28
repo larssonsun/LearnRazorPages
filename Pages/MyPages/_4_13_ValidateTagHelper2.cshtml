@@ -1,0 +1,25 @@
+@page "{handler?}"
+@model ValidateTagHelper2Model
+@{
+    @section scripts{
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+    }
+}
+<form asp-route-handler="Save" method="post">
+    <!-- asp-validation-summary设置为ModelOnly时，novalidate="novalidate" 规定当提交表单时不对其进行验证 html5 -->
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Type">类型</label>
+        <input asp-for="Type" placeholder="类型" />
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Man.FirstName">姓氏</label>
+        <input asp-for="Man.FirstName" placeholder="姓氏" />
+        <span asp-validation-for="Man.FirstName" class="text-danger"></span>
+    </div>
+    <div>
+        <button>保存</button>
+    </div>
+</form>
+<h2>@Model.Msg</h2>

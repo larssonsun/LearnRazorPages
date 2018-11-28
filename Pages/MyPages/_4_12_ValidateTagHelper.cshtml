@@ -7,7 +7,7 @@
 @model ValidateTagHelperModel
 <form asp-route-handler="Save" method="post">
     <p><input asp-for="Player.PlayerName" /></p>
-    <!-- following tag working on client validate to display the result message -->
+    <!-- the following tag working on client validate to display the result message -->
     <p><span asp-validation-for="Player.PlayerName"></span></p>
     <p><input type="submit" /></p>
 </form>
