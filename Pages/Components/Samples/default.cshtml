@@ -1,0 +1,5 @@
+@model SamplesForSelect
+<h3>im view component</h3>
+<select asp-for="@Model.SelectSampleId" asp-items="@Model.Item_Samples">
+    <option value="">请选择样品</option>
+</select>

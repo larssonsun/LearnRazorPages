@@ -1,0 +1,11 @@
+@page
+<h3>use viewcomponents</h3>
+<vc:samples item-id="1101"></vc:samples>
+@{
+
+    ////or we can use
+    ////the Component.InvokeAsync method to render the output of the view component to the page. 
+    ////The string which is passed to the method represents the name of the view component 
+    ////(the class name without the "ViewComponent" suffix).
+    //@await  Component.InvokeAsync("Samples", "1101")
+}
