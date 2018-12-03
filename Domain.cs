@@ -14,6 +14,6 @@ namespace myfirstrazorpages
     {
         public SelectList Item_Samples { get; set; }
 
-        public string SelectSampleId { get; set; }
+        public string Title { get; set; }
     }
 }

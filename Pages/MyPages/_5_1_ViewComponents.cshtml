@@ -1,6 +1,12 @@
-@page
+@page "{handler?}"
+@model ViewComponentsPageModel
+
 <h3>use viewcomponents</h3>
-<vc:samples item-id="1101"></vc:samples>
+<form asp-route-handler="save" method="post">
+    <vc:samples item-id="@Model.itemId"></vc:samples>
+    <button>保存</button>
+</form>
+<h2>@Model.Message</h2>
 @{
 
     ////or we can use

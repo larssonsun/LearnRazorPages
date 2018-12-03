@@ -74,6 +74,7 @@ public class SelectTagHelperModel2 : PageModel
 
         //vm prop
 
+        //use SelectList
         Samples = new SelectList(source_samples, "SampleId", "SampleName", null, "ItemId");
         // if the class "Samples" is Strong type, we should use nameof for each class property 
         // to minimise the chances of typos creeping into the code. just like fllowing eg:

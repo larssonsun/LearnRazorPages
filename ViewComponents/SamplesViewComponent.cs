@@ -27,8 +27,8 @@ namespace myfirstrazorpages.ViewComponents
 
             var selectedValue = new SelectList(
                 samples, nameof(Sample.SampleId), nameof(Sample.SampleName),
-                null, nameof(Sample.ItemId));
-            return View(model: new SamplesForSelect { Item_Samples = selectedValue, SelectSampleId = string.Empty });
+                $"{itemId}01", nameof(Sample.ItemId));
+            return View(model: new SamplesForSelect { Item_Samples = selectedValue, Title = "im view component" });
         }
     }
 
