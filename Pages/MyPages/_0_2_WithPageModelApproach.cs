@@ -7,7 +7,7 @@ namespace myfirstrazorpages.Pages
     //to the PageModel class rather than applying [BindPRoperty] to individual properties, 
     //which results in all the public properties in the PageModel taking part in model binding。
     
-    //or decorated with the BindProperty attribute in each property whitch you want
+    //or decorated with the BindProperty attribute in each property whitch you want    
     [BindProperties]
     public class WithPageModelApproachPageModel : PageModel
     {
