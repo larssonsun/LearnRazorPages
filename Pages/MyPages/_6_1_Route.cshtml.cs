@@ -54,8 +54,9 @@ public class RoutePageModel : PageModel
         Msg = $"name from form = {Request.Form["name"].ToString()}";
         Msg2 = $"first name from = {FirstName}";
 
-        // if not do this following, the prop "FirstName" will set value for cshtml
-        // and now this will tracking event "OnGet"
+        // the prop "FirstName" will set value for cshtml
+        // but now this prop will tracking the even handler "OnGet", so "FirstName" 's value will init
+        // after doing following:
         return RedirectToPage();
     }
 }
