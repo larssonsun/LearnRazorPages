@@ -5,6 +5,8 @@
     <input asp-for="FirstName" placeholder="@RoutePageModel.N.FirstName" />
     <button>@RoutePageModel.N.Submit</button>
 </form>
+<!-- because of the PageTemplet Parms "handler?" and "shity?" following tag "a"
+will be like this : "https://localhost:5001/MyPages/_6_1_Route/routeDatahandler/routeDatashity?fuk=querystringDataFuk" -->
 <p><a asp-route-handler="routeDatahandler" asp-route-shity="routeDatashity" asp-route-fuk="querystringDataFuk">route parameter "shity"</a></p>
 <h3>@Model.Msg</h3>
 <h3>@Model.Msg2</h3>

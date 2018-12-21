@@ -24,7 +24,7 @@ public class RoutePageModel : PageModel
     [BindProperty]
     public string FirstName { set; get; }
 
-    [BindProperty(SupportsGet=true)]
+    [BindProperty(SupportsGet = true)]
     public string Shity { set; get; }
 
     public void OnGet()
@@ -35,7 +35,8 @@ public class RoutePageModel : PageModel
         if (RouteData.Values.ContainsKey("handler"))
             Msg = $"RouteData.Values[\"handler\"] = { RouteData.Values["handler"] }";
 
-        // because of the "[BindProperty(SupportsGet=true)]" for prop "Shity", it will be:
+        // because of the "[BindProperty(SupportsGet=true)]" for prop "Shity" the Handler "Get" 
+        // the handler "OnGet" will be like the following to accpet the querystring "shity":
         // public void OnGet(string shity)
         // {
         //     Shity = shity;
@@ -48,15 +49,18 @@ public class RoutePageModel : PageModel
         Console.WriteLine($"Name={Name}");
 
         // because of BindProperty , the Prop FirstName will be doing like the following :
-        // FirstName = Request.Form["FirstName"].ToString();
+        // FirstName = Request.Form["FirstName"];
         Console.WriteLine($"FirstName={FirstName}");
 
-        Msg = $"name from form = {Request.Form["name"].ToString()}";
+        Msg = $"name from form = {Request.Form["name"]}";
         Msg2 = $"first name from = {FirstName}";
 
         // the prop "FirstName" will set value for cshtml
         // but now this prop will tracking the even handler "OnGet", so "FirstName" 's value will init
         // after doing following:
-        return RedirectToPage();
+        return RedirectToPage(
+            pageName: "_6_1_Route",
+            pageHandler: "b", 
+            routeValues: new { shity = $"FirstName={FirstName}, Name={Request.Form["name"]}" });
     }
 }
