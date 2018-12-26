@@ -1,5 +1,12 @@
 @page "{handler?}"
 @model AreasPageModel
 <a asp-route-handler="gotoareaadminfuckinusers">Go To Area FukinUsers! by RedirectToPage</a>
+
 <!--in this following asp-route-page="/Index" is not necessary -->
-<a asp-route-page="/Index" asp-area="User" asp-page-handler="Shit">Go To Area Users !</a>
+<!-- because of the page template constrains in /User/Index.cshtml. 
+    the type of page handler must be double  -->
+<a asp-page="/index" asp-area="User" asp-page-handler="1">Go To Area Users !</a>
+
+<!-- because of the OverrideRoutes.cshtml is overrided template to "@page /over" 
+    so this anchor tag will become  <a href="/over">Go To Override Routes Page.</a> -->
+<a asp-page="/OverrideRoutes" asp-area="User">Go To Override Routes Page.</a>
