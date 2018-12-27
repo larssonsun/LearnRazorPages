@@ -2,11 +2,21 @@
 @model AreasPageModel
 <a asp-route-handler="gotoareaadminfuckinusers">Go To Area FukinUsers! by RedirectToPage</a>
 
+
+ 
+    <!-- The primary use case for areas in Razor Pages is 
+to facilitate the introduction of Razor class libraries, 
+specifically the change that resulted in the introduction of Identity as a 
+class library in ASP.NET Core 2.1. 
+
+    Areas in Razor Pages can also be used to 
+divide the application up into functional segments similar to MVC.  -->
+
 <!--in this following asp-route-page="/Index" is not necessary -->
 <!-- because of the page template constrains in /User/Index.cshtml. 
     the type of page handler must be double  -->
 <a asp-page="/index" asp-area="User" asp-page-handler="1">Go To Area Users !</a>
 
-<!-- because of the OverrideRoutes.cshtml is overrided template to "@page /over" 
-    so this anchor tag will become  <a href="/over">Go To Override Routes Page.</a> -->
+<!-- because of the OverrideRoutes.cshtml is overrided template to page “／over”
+    so this anchor tag will become  href=“／／over“ -->
 <a asp-page="/overrideroutes" asp-area="User">Go To Override Routes Page.</a>

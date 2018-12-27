@@ -1,0 +1,8 @@
+@page "{handler?}"
+@model CustomPageRouteConvModel
+
+<!-- we visit this page replace "/MyPages/_6_3_CustomPageRouteConv" for "/Fukin/123" -->
+<!-- pls look at CustomPageRouteModelConvention.cs first -->
+<h3>from /MyPage/_6_3_CustomPageRouteConv.cshtml</h3>
+<h3>@@Model.RouteData.Values&nbsp;=&nbsp;@(Model.RouteData.Values["handler"])</h3>
+<h3>@@Model.Handler&nbsp;=&nbsp;@(Model.Handler)</h3>
