@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using myfirstrazorpages.Services;
 
 namespace myfirstrazorpages
 {
@@ -37,8 +38,11 @@ namespace myfirstrazorpages
                 options.Conventions.Add(new CustomPageRouteModelConvention());
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            
             // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //registers the IPrinter with the dependency injection system, 
+            // and specifies that SimulatePrinter is the actual implementation to use.
+            services.AddTransient<IPrinter, SimulatePrinter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,14 @@
+@page "{handler?}"
+@model IocServicesModel
+
+<form asp-route-handler="save" method="post">
+    <label asp-for="InputContent">输入打印内容</label>
+    <input asp-for="InputContent" />
+    <button>保存打印内容</button>
+</form>
+<form asp-route-handler="print" method="post">
+    <label asp-for="PrintContent">打印目标</label>
+    <input asp-for="PrintContent" value="@Model.SavedContent" />
+    <button>打印</button>
+</form>
+<h3>打印结果：@Model.PrintResult</h3>
