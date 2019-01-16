@@ -5,7 +5,7 @@ using myfirstrazorpages.Services;
 public class IocServicesModel : PageModel
 {
     private IPrinter _printer;
-    public IocServicesModel(IPrinter printer)
+    public IocServicesModel(IPrinter printer)//DI
     {
         _printer = printer;
     }
