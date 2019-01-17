@@ -51,6 +51,18 @@ namespace myfirstrazorpages
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                
+                // When an error occurs within the specified range, this usage results in a plain text response with a default message
+                // app.UseStatusCodePages();
+
+                // or we can format the content
+                // app.UseStatusCodePages("text/html", "<h1>Error! Status Code {0}</h1>");
+
+                // make error redirect to some pages by error code
+                // app.UseStatusCodePagesWithRedirects("/Error/{0}");
+
+                //or we can use. important! for seo use following:
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
             else
             {
