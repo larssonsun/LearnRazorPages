@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using myfirstrazorpages.Services;
@@ -31,7 +32,16 @@ namespace myfirstrazorpages
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            
+
+            //fource to use https
+            //make sure the statment "app.UseHttpsRedirection();" is disabled
+            // services.Configure<MvcOptions>(options =>
+            // {
+            //     //if we use "Permanent" prop , broswer will not receive 302
+            //     //这里有个问题，我不知道如何制定ssl的端口，他默认是https的443。于是就报404了
+            //     options.Filters.Add(new RequireHttpsAttribute { Permanent = true });
+            // });
+
             // registering the new convention with RazorPagesOptions:
             services.AddMvc().AddRazorPagesOptions(options =>
             {
@@ -51,7 +61,7 @@ namespace myfirstrazorpages
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                
+
                 // When an error occurs within the specified range, this usage results in a plain text response with a default message
                 // app.UseStatusCodePages();
 
@@ -63,6 +73,10 @@ namespace myfirstrazorpages
 
                 //or we can use. important! for seo use following:
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
+                
+                //use url rewrite ， 指定ssl的端口为5001，因为测试服务器的host默认是5001
+                var options = new RewriteOptions().AddRedirectToHttps(301, 5001);
+                app.UseRewriter(options);
             }
             else
             {
@@ -70,7 +84,7 @@ namespace myfirstrazorpages
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
