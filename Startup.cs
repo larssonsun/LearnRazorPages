@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using myfirstrazorpages.Services;
+using MyMiddleware.MyFukin;
 
 namespace myfirstrazorpages
 {
@@ -94,6 +95,9 @@ namespace myfirstrazorpages
             // app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            
+            // 在Request管道中注册一个自己的中间件MyFukin
+            app.UseMyFukin();
 
             app.UseMvc();
         }
