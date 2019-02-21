@@ -1,0 +1,46 @@
+@page "{handler?}"
+@model WorkingWithFormCheckboxModel
+@{}
+
+<form method="post">
+    <!-- SingleChecked -->
+    <label for="SingleChecked">checkbox Use TagHelper</label>
+    <input asp-for="SingleChecked">
+    <button  asp-page-handler="showresult">test</button>
+
+    <!-- SingleChecked WithNoTagHelper -->
+    <br>
+    <br>
+    <label for="SingleCheckedWithNoTagHelper">checkbox not Use TagHelper</label>
+    <!-- 下面的复选框的id属性这里只是给label关联所用 -->
+    <input type="checkbox" id="SingleCheckedWithNoTagHelper" name="SingleCheckedWithNoTagHelper" value="True" />
+    <button  asp-page-handler="showresult2">test2</button>
+
+    <!-- MultiplChecked -->
+    <br>
+    <br>
+    @for (var i=0 ; i <Model.MultiplChecked.Count(); i++)
+    {
+        <input asp-for="MultiplChecked[i].Checked">
+        <label asp-for="MultiplChecked[i].Checked">@Model.MultiplChecked[i].ParameterName</label>
+        <input type="hidden" asp-for="MultiplChecked[i].ParameterId" value="@Model.MultiplChecked[i].ParameterId" />
+        <br>
+    }
+    <button  asp-page-handler="showresult3">test3</button>
+
+    <!-- MultiplChecked with explicit index -->
+    <br>
+    <br>
+    @foreach (var parameter in Model.MultiplChecked2)
+    {
+        <input type="checkbox" name="MultiplChecked2[@parameter.ParameterId].Checked" 
+            id='@("sc_" + parameter.ParameterId)' value="true">
+        <label for='@("sc_" + parameter.ParameterId)'>@parameter.ParameterName</label>
+        <input type="hidden" name="MultiplChecked2[@parameter.ParameterId].ParameterId" value="@parameter.ParameterId" />
+
+        <!-- The hidden field must be named in the form boundpropertyname.Index, and the value must be the index -->
+        <input type="hidden" name="MultiplChecked2.Index" value="@parameter.ParameterId" />
+    }
+    <button  asp-page-handler="showresult4">test4</button>
+</form>
+<p>@Model.Message</p>
