@@ -1,0 +1,8 @@
+@page "{handler?}"
+@model WorkingWithFormSelectModel
+@{}
+<form asp-route-handler="save" method="post">
+    <select asp-for="SelectedKind" asp-items="Model.OptionsKind"></select>
+    <button>save</button>
+</form>
+<P>@Model.Message</P>

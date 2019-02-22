@@ -3,6 +3,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace myfirstrazorpages
 {
+    public class Kind
+    {
+        public string KindName { get; set; }
+        public string KindId { set; get; }
+    }
+    
     public class Sample
     {
         public string SampleName { get; set; }
