@@ -1,0 +1,17 @@
+@page "{handler?}"
+@model RelatedCollectionsPageModel
+@{
+}
+<form asp-route-handler="save" method="post">
+    @for(var i =0 ; i< Model.kinds.Count() ; i++)
+    {
+        <div>
+            <span>@Model.kinds[i].KindId</span>
+            <span>@Model.kinds[i].KindName</span>
+            items: <select asp-for="SelectedKind" asp-items="Model.kinds[i].SelItems"></select>
+        </div>
+        <br><br>
+    }
+    <button>save</button>
+</form>
+<P>@Model.Message</P>

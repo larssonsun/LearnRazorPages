@@ -7,8 +7,16 @@ namespace myfirstrazorpages
     {
         public string KindName { get; set; }
         public string KindId { set; get; }
+
+        public SelectList SelItems { get; set; }
     }
-    
+
+    public class Item
+    {
+        public string ItemName { get; set; }
+        public string ItemId { get; set; }
+    }
+
     public class Sample
     {
         public string SampleName { get; set; }
