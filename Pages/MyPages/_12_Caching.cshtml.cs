@@ -9,6 +9,8 @@ public class CachingPageModel : PageModel
 {
     private readonly IMemoryCache _cache;
 
+    // It is enabled when it is added as a service in the ConfigureServices method 
+    // in the Startup class using the AddMemoryCache extension method
     public CachingPageModel(IMemoryCache cache)
     {
         _cache = cache;
