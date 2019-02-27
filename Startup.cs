@@ -43,6 +43,9 @@ namespace myfirstrazorpages
                 // options.Filters.Add(new RequireHttpsAttribute { Permanent = true });
             });
 
+            // enable the cache in memory
+            services.AddMemoryCache();
+
             // registering the new convention with RazorPagesOptions:
             services.AddMvc().AddRazorPagesOptions(options =>
             {

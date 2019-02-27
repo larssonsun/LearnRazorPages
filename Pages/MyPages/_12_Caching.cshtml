@@ -1,0 +1,11 @@
+@page "{handler?}"
+@model CachingPageModel
+@{}
+
+<form method="post">
+    
+    <input asp-for="Item.ItemName">
+    <input asp-for="Item.ItemId">
+    <button asp-route-handler="SetItem">Set Item 1102</button>
+    <button asp-route-handler="RemoveItem">Remove Item 1102</button>
+</form>
