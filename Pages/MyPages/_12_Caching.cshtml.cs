@@ -44,7 +44,14 @@ public class CachingPageModel : PageModel
             // entity.AbsoluteExpirationRelativeToNow = new TimeSpan(0,1,0);
 
             // The cache will expire after 5 seconds from last request
-            entity.SlidingExpiration = new TimeSpan(0, 0, 5);
+            // entity.SlidingExpiration = new TimeSpan(0, 0, 5);
+
+            // 这里我自定义了一个对象返回一个IChangeToken对象，用处是将submit 的KindId与预设的“12”进行比较
+            // 如果相互不等于则cache直接过期（等于没缓存）。
+            // 实际应用中这个“12”应该是从数据库或者其他缓存中得到（在IfKindChanged中实现）
+            var en = entity as Item;
+            IfKindChanged ikc = new IfKindChanged(KindId, "12");
+            entity.ExpirationTokens.Add(ikc.Watch());
 
             return new Item { ItemName = "细骨料", ItemId = "1102" };
         });
