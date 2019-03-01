@@ -2,6 +2,10 @@
 @model RelatedCollectionsPageModel
 @{
 }
+<form asp-route-handler="filter">
+    <input asp-for="FilterStgr">
+    <button>filter kind</button>
+</form>
 <form asp-route-handler="save" method="post">
     @for(var i =0 ; i< Model.kinds.Count() ; i++)
     {
