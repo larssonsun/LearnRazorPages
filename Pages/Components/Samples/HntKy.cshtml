@@ -1,0 +1,7 @@
+@model SampleUc_Hntky
+<h3>@Model.Title</h3>
+<!-- 下面的select中asp-items的数据源是来自于非绑定的数据,所以直接"Model.Item_Samples"会抛异常 -->
+<!-- name="SelectSampleId" 方便调用页面绑定其属性 -->
+<select name="SelectSampleId" asp-items="@Model.Item_Samples">
+    <option value="">请选择样品</option>
+</select>

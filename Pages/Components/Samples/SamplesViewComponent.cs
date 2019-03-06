@@ -25,10 +25,15 @@ namespace myfirstrazorpages.ViewComponents
                 };
             });
 
-            var selectedValue = new SelectList(
+            var extSelList = new SelectList(
                 samples, nameof(Sample.SampleId), nameof(Sample.SampleName),
                 $"{itemId}01", nameof(Sample.ItemId));
-            return View(model: new SamplesForSelect { Item_Samples = selectedValue, Title = "im view component" });
+
+            // use default view of the viewcomponent (Omit the default view of the viewconponent, named "default")
+            return View(model: new SamplesForSelect { Item_Samples = extSelList, Title = "im default view component" });
+
+            // use sampleuc_hntky view of the viewconponent
+            // return View("hntky", model:new SampleUc_Hntky{ Title="我是sampleuc_hntky", Item_Samples = extSelList});
         }
     }
 

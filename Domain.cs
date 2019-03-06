@@ -33,6 +33,13 @@ namespace myfirstrazorpages
         public string Title { get; set; }
     }
 
+    public class SampleUc_Hntky
+    {
+        public string Title { get; set; }
+
+        public SelectList Item_Samples { get; set; }
+    }
+
     // 自定义的IChangeToken实例，实际使用应该由某个实例返回一个IChangeToken对象
     public class MyChangeToken : IChangeToken
     {
