@@ -15,11 +15,11 @@ namespace MyMiddleware.MyFukin
             _logger = loggerFactory.CreateLogger<MyFuckinMiddleware>();
         }
 
-        public Task Invoke(HttpContext tc)
+        public async Task Invoke(HttpContext tc)
         {
             _logger.LogInformation("我是 MyFukin Middleware");
             // Console.WriteLine("我是 MyFukin Middleware");
-            return _next(tc);
+            await _next(tc);
         }
     }
 }
