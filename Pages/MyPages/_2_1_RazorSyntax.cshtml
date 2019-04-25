@@ -6,13 +6,14 @@
     var numbers = Enumerable.Range(1, 10); //Get numbers from 1 - 10
 }
 
-
-<h3>shity @u </h3>
+<!-- 这里也可是 @u -->
+<h3>shity @(u) </h3>
 <br/>
 
 @{
     foreach(var number in numbers){
         //@()是Razor的显式表达式，其中内容会呈现到html中
+        //我各人理解 @()或者@变量 就是response.write的功能
         <p>@(number * 10)</p>
     }
 }
